@@ -81,3 +81,8 @@ C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\bin\ros
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\bin\roslyn\vbc.exe.config
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\bin\roslyn\vbc.rsp
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.InitialModel.resources
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddIsSubscribedToCustomer.resources
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddMembershipType.resources
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.PopulateMembershipClass.resources
