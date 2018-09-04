@@ -86,3 +86,4 @@ C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Deb
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddIsSubscribedToCustomer.resources
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddMembershipType.resources
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.PopulateMembershipClass.resources
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.ApplyAnnonationsToCustomerName.resources
