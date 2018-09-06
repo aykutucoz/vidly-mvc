@@ -228,6 +228,14 @@
     <Compile Include="Migrations\201809060826320_SetDateTimeCustomers.Designer.cs">
       <DependentUpon>201809060826320_SetDateTimeCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809060849241_AddPropsToMovie.cs" />
+    <Compile Include="Migrations\201809060849241_AddPropsToMovie.Designer.cs">
+      <DependentUpon>201809060849241_AddPropsToMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809061041071_PopulateMovies.cs" />
+    <Compile Include="Migrations\201809061041071_PopulateMovies.Designer.cs">
+      <DependentUpon>201809061041071_PopulateMovies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -347,6 +355,8 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -388,6 +398,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809060826320_SetDateTimeCustomers.resx">
       <DependentUpon>201809060826320_SetDateTimeCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809060849241_AddPropsToMovie.resx">
+      <DependentUpon>201809060849241_AddPropsToMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809061041071_PopulateMovies.resx">
+      <DependentUpon>201809061041071_PopulateMovies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
