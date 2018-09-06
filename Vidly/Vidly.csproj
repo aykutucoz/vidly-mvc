@@ -220,6 +220,14 @@
     <Compile Include="Migrations\201809050700536_SetNameOfMembershipTypes.Designer.cs">
       <DependentUpon>201809050700536_SetNameOfMembershipTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809060821228_AddDateTimeToCustomers.cs" />
+    <Compile Include="Migrations\201809060821228_AddDateTimeToCustomers.Designer.cs">
+      <DependentUpon>201809060821228_AddDateTimeToCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809060826320_SetDateTimeCustomers.cs" />
+    <Compile Include="Migrations\201809060826320_SetDateTimeCustomers.Designer.cs">
+      <DependentUpon>201809060826320_SetDateTimeCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -374,6 +382,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809050700536_SetNameOfMembershipTypes.resx">
       <DependentUpon>201809050700536_SetNameOfMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809060821228_AddDateTimeToCustomers.resx">
+      <DependentUpon>201809060821228_AddDateTimeToCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809060826320_SetDateTimeCustomers.resx">
+      <DependentUpon>201809060826320_SetDateTimeCustomers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

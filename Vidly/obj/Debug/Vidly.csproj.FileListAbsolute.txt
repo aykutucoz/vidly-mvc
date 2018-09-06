@@ -89,3 +89,5 @@ C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Deb
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.ApplyAnnonationsToCustomerName.resources
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddNameToMembershipType.resources
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.SetNameOfMembershipTypes.resources
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddDateTimeToCustomers.resources
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.SetDateTimeCustomers.resources
