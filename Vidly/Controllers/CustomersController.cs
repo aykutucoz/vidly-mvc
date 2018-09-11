@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 
 namespace Vidly.Controllers
 {
@@ -50,9 +51,35 @@ namespace Vidly.Controllers
             return View("CustomerForm",viewModel);
         }
         [HttpPost]
-        public ActionResult Create()
+        public ActionResult Save(Customer customer)
         {
-            return View();
+            if (customer.Id == 0)
+            {
+                _context.Customers.Add(customer);
+            }
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+
+                //TryUpdateModel(customerInDb); güvenli olmayan bir yöntem.AutoMapper kullanılabilir.
+                // Mapper.Map(customer,customerInDb);
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthdate = customer.Birthdate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsleter = customer.IsSubscribedToNewsleter;
+            }
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+
+                throw;
+            }
+            
+
+            return RedirectToAction("Index","Customers");
         }
 
         public ActionResult Edit(int id)

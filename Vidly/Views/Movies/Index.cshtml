@@ -4,24 +4,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Movie</th>
-            <th>Genre</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-        @foreach (var m in Model)
-            {
+<h2>Movies</h2>
+    @Html.ActionLink("New Movie","New","Movies", new { @class = "btn btn-primary" })
+    <table class="table table-bordered table-hover">
+        <thead>
             <tr>
-                <td>@Html.ActionLink(m.Name, "Details", "Movies", new { id = m.Id }, null)</td>
-                <td>@m.Genre</td>
+                <th>Movie</th>
+                <th>Genre</th>
             </tr>
-             }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+
+            @foreach (var m in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(m.Name, "Edit", "Movies", new { id = m.Id }, null)</td>
+                    <td>@m.Genre</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
 
 
 
