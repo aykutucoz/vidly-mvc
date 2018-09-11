@@ -19,7 +19,7 @@
             {
                 <tr>
                     <td>@Html.ActionLink(m.Name, "Edit", "Movies", new { id = m.Id }, null)</td>
-                    <td>@m.Genre</td>
+                    <td>@m.Genre.Name</td>
                 </tr>
             }
         </tbody>

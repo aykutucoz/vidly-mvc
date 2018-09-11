@@ -51,22 +51,22 @@ namespace Vidly.Controllers
             return View("CustomerForm",viewModel);
         }
         [HttpPost]
-        public ActionResult Save(Customer customer)
+        public ActionResult Save(CustomerFormViewModel customer)
         {
-            if (customer.Id == 0)
+            if (customer.Customers.Id == 0)
             {
-                _context.Customers.Add(customer);
+                _context.Customers.Add(customer.Customers);
             }
             else
             {
-                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Customers.Id);
 
                 //TryUpdateModel(customerInDb); güvenli olmayan bir yöntem.AutoMapper kullanılabilir.
                 // Mapper.Map(customer,customerInDb);
-                customerInDb.Name = customer.Name;
-                customerInDb.Birthdate = customer.Birthdate;
-                customerInDb.MembershipTypeId = customer.MembershipTypeId;
-                customerInDb.IsSubscribedToNewsleter = customer.IsSubscribedToNewsleter;
+                customerInDb.Name = customer.Customers.Name;
+                customerInDb.Birthdate = customer.Customers.Birthdate;
+                customerInDb.MembershipTypeId = customer.Customers.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsleter = customer.Customers.IsSubscribedToNewsleter;
             }
             try
             {
@@ -74,8 +74,7 @@ namespace Vidly.Controllers
             }
             catch (DbEntityValidationException e)
             {
-
-                throw;
+                Console.WriteLine(e);
             }
             
 

@@ -240,6 +240,22 @@
     <Compile Include="Migrations\201809101255554_AddGenre.Designer.cs">
       <DependentUpon>201809101255554_AddGenre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809110659459_PopulateGenre.cs" />
+    <Compile Include="Migrations\201809110659459_PopulateGenre.Designer.cs">
+      <DependentUpon>201809110659459_PopulateGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809110725195_PopulateMovies2.cs" />
+    <Compile Include="Migrations\201809110725195_PopulateMovies2.Designer.cs">
+      <DependentUpon>201809110725195_PopulateMovies2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809110820544_SetMovieClass.cs" />
+    <Compile Include="Migrations\201809110820544_SetMovieClass.Designer.cs">
+      <DependentUpon>201809110820544_SetMovieClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809110830244_SetMovieClassToDateTime2.cs" />
+    <Compile Include="Migrations\201809110830244_SetMovieClassToDateTime2.Designer.cs">
+      <DependentUpon>201809110830244_SetMovieClassToDateTime2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -416,6 +432,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809101255554_AddGenre.resx">
       <DependentUpon>201809101255554_AddGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809110659459_PopulateGenre.resx">
+      <DependentUpon>201809110659459_PopulateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809110725195_PopulateMovies2.resx">
+      <DependentUpon>201809110725195_PopulateMovies2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809110820544_SetMovieClass.resx">
+      <DependentUpon>201809110820544_SetMovieClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809110830244_SetMovieClassToDateTime2.resx">
+      <DependentUpon>201809110830244_SetMovieClassToDateTime2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Vidly.Models;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Vidly.Models
 {
@@ -11,19 +12,20 @@ namespace Vidly.Models
     {
         public int Id { get; set; }
 
-        [Required]
         [StringLength(255)]
         public string Name { get; set; }
-
-        [Required]
+        
         public Genre Genre { get; set; }
 
         [Display(Name = "Genre")]
+        [Required]
         public int GenreId { get; set; }
 
-        [Display(Name="Release Date")]
+        [Display(Name = "Release Date")]
+        [Column(TypeName = "datetime2")]
         public DateTime RealeseDate { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime DateAdded { get; set; }
 
         [Display(Name = "Number In Stock")]
