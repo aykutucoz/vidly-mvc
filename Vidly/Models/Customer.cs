@@ -11,7 +11,7 @@ namespace Vidly.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="İsim Alanı Girilmesi Zorunludur.")]
         [StringLength(255)]
         public string Name { get; set; }
 
@@ -22,6 +22,7 @@ namespace Vidly.Models
         [Display(Name="Membership Type")]
         public byte MembershipTypeId { get; set; }
 
+        [Min18Years]
         [Display(Name = "Date of Birth")]
         public DateTime? Birthdate { get; set; }
     }
