@@ -24,7 +24,7 @@ namespace Vidly.Models
 
             var age = DateTime.Today.Year - customer.Birthdate.Value.Year;
 
-            return (age <= 18) ? ValidationResult.Success : new ValidationResult("You have to be at least 18 years old.");
+            return (age >= 18) ? ValidationResult.Success : new ValidationResult("You have to be at least 18 years old.");
 
         }
     }

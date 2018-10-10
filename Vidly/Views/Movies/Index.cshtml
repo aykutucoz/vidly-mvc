@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<Vidly.Models.Movie>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Movies</h2>
-    @Html.ActionLink("New Movie","New","Movies", new { @class = "btn btn-primary" })
+    @Html.ActionLink("New Movie","New","Movies",null, new { @class = "btn btn-primary" })
     <table class="table table-bordered table-hover">
         <thead>
             <tr>

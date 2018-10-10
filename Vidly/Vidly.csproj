@@ -256,6 +256,26 @@
     <Compile Include="Migrations\201809110830244_SetMovieClassToDateTime2.Designer.cs">
       <DependentUpon>201809110830244_SetMovieClassToDateTime2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810101056387_UpdateDatabase.cs" />
+    <Compile Include="Migrations\201810101056387_UpdateDatabase.Designer.cs">
+      <DependentUpon>201810101056387_UpdateDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810101154061_UpdateClasses.cs" />
+    <Compile Include="Migrations\201810101154061_UpdateClasses.Designer.cs">
+      <DependentUpon>201810101154061_UpdateClasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810101252168_UpdateMovieClassProporties.cs" />
+    <Compile Include="Migrations\201810101252168_UpdateMovieClassProporties.Designer.cs">
+      <DependentUpon>201810101252168_UpdateMovieClassProporties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810101303089_PopulateGenreAgain.cs" />
+    <Compile Include="Migrations\201810101303089_PopulateGenreAgain.Designer.cs">
+      <DependentUpon>201810101303089_PopulateGenreAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810101311268_UpdateMovieClassAgain.cs" />
+    <Compile Include="Migrations\201810101311268_UpdateMovieClassAgain.Designer.cs">
+      <DependentUpon>201810101311268_UpdateMovieClassAgain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -265,6 +285,7 @@
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18Years.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\NumberInStockCount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
@@ -445,6 +466,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809110830244_SetMovieClassToDateTime2.resx">
       <DependentUpon>201809110830244_SetMovieClassToDateTime2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101056387_UpdateDatabase.resx">
+      <DependentUpon>201810101056387_UpdateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101154061_UpdateClasses.resx">
+      <DependentUpon>201810101154061_UpdateClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101252168_UpdateMovieClassProporties.resx">
+      <DependentUpon>201810101252168_UpdateMovieClassProporties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101303089_PopulateGenreAgain.resx">
+      <DependentUpon>201810101303089_PopulateGenreAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101311268_UpdateMovieClassAgain.resx">
+      <DependentUpon>201810101311268_UpdateMovieClassAgain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -33,13 +33,13 @@ namespace Vidly.Controllers
         
         public ActionResult Details(int id)
         {
-            var movies = _context.Movies.SingleOrDefault(i => i.Id == id);
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
 
-            if (movies == null)
+            if (movie == null)
             {
                 return HttpNotFound();
             }
-            return View(movies);
+            return View(movie);
         }
 
         public ActionResult New()
@@ -62,31 +62,39 @@ namespace Vidly.Controllers
                 return HttpNotFound();
             }
 
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel(Movies)
             {
-                Movies = Movies,
                 Genres = _context.Genres.ToList()
             };
 
             return View("MovieForm",viewModel);
         }
         [HttpPost]
-        public ActionResult Save(MovieFormViewModel Movie)
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(Movie Movie)
         {
-            if (Movie.Movies.Id == 0)
+            if (!ModelState.IsValid)
             {
-                Movie.Movies.DateAdded = DateTime.Now;
-                _context.Movies.Add(Movie.Movies);
+                var viewModel = new MovieFormViewModel(Movie)
+                {
+                    Genres = _context.Genres.ToList()    
+                };
+                return View("MovieForm",viewModel);
+            }
+
+            if (Movie.Id == 0)
+            {
+                Movie.DateAdded = DateTime.Now;
+                _context.Movies.Add(Movie);
             }
 
             else
             {
-                var model = _context.Movies.Single(i => i.Id == Movie.Movies.Id);
-                model.Name = Movie.Movies.Name;
-                model.GenreId = Movie.Movies.GenreId;
-                model.DateAdded = DateTime.Now;
-                model.NumberInStock = Movie.Movies.NumberInStock;
-                model.RealeseDate = Movie.Movies.RealeseDate;
+                var model = _context.Movies.Single(i => i.Id == Movie.Id);
+                model.Name = Movie.Name;
+                model.GenreId = Movie.GenreId;
+                model.NumberInStock = Movie.NumberInStock;
+                model.ReleaseDate = Movie.ReleaseDate;
             }
             try
             {
