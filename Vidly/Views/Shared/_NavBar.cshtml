@@ -1,11 +1,9 @@
-﻿
-<div class="navbar navbar-expand-lg navbar-fixed-top bg-light">
+﻿<div class="navbar navbar-expand-lg navbar-fixed-top bg-light">
     <div class="container">
         @Html.ActionLink("Vidly", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarResponsive" aria-expanded="false" aria-controls="navbarResponsive" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-           
+            </button>           
         <div class="navbar-collapse collapse" id="navbarResponsive">
             <ul class="nav navbar-nav navbar-light">
                 <li class="nav-item">@Html.ActionLink("Customers", "Index", "Customers", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
