@@ -23,11 +23,16 @@ namespace Vidly.App_Start
 
         public MappingProfile()
         {
-            CreateMap<Customer, CustomerDto>()
+            CreateMap<CustomerDto, Customer>()
                 .ForMember(d => d.Id, opt => opt.Ignore())
                 .ReverseMap();
 
-            CreateMap<Movie, MovieDto>();
+            CreateMap<MovieDto, Movie>()
+                .ForMember(d=>d.Id, opt => opt.Ignore())
+                .ReverseMap();
+
+            CreateMap<MembershipTypeDto, MembershipType>()
+                .ReverseMap();
 
         }
     }
