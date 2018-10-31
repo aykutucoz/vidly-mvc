@@ -34,6 +34,10 @@ namespace Vidly.App_Start
             CreateMap<MembershipTypeDto, MembershipType>()
                 .ReverseMap();
 
+            CreateMap<GenreDto, Genre>()
+                .ReverseMap();
+
+
         }
     }
 }

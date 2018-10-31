@@ -10,5 +10,24 @@ namespace Vidly.ViewModels
     {
         public IEnumerable<MembershipType> MembershipTypes { get; set; }
         public Customer Customers { get; set; }
+
+        public int Id { get; set; }
+
+        public string Title
+
+        {
+            get
+            {
+                if (Id != 0)
+                {
+                    return "Edit Customer";
+                }
+                return "New Customer";
+            }
+        }
+        public CustomerFormViewModel()
+        {
+            Id = 0;
+        }
     }
 }
