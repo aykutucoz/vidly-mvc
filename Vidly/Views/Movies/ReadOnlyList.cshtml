@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Vidly.Models.Movie>
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+    <table class="table table-bordered table-hover" id="movies" style="margin-top:25px;">
+        <thead>
+            <tr>
+                <th>Movie</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @*@foreach (var m in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(m.Name, "Edit", "Movies", new { id = m.Id }, null)</td>
+                    <td>@m.Genre.Name</td>
+                </tr>
+            }*@
+        </tbody>
+    </table>
+@section scripts
+    {
+        <script>
+            $(document).ready(function () {
+                var table = $("#movies").DataTable({
+                    ajax: {
+                        url: "/api/movies",
+                        dataSrc: ""
+                    },
+                    columns: [
+                        {
+                            data: "name"
+                        },
+                        {
+                            data: "genre.name"
+                        }
+                    ]
+
+                });               
+            });
+        </script>
+    }
+
+
+
+
