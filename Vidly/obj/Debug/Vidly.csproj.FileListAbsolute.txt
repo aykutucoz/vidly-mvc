@@ -116,3 +116,8 @@ C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Deb
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.pdb
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.SeedUsers.resources
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddDrivingLicenseToUser.resources
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\bin\Glimpse.Core.dll
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\bin\Glimpse.Ado.dll
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\bin\Glimpse.AspNet.dll
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\bin\Glimpse.EF6.dll
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\bin\Glimpse.Mvc5.dll
