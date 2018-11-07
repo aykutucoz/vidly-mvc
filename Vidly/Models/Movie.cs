@@ -23,17 +23,16 @@ namespace Vidly.Models
 
         [Display(Name = "Release Date")]
         [Column(TypeName = "datetime2")]
-        [Required]
         public DateTime ReleaseDate { get; set; }
 
         [Column(TypeName = "datetime2")]
-        [Required]
         public DateTime DateAdded { get; set; }
 
         [Range(1,20)]
-        [Required]
         [Display(Name = "Number In Stock")]
         public byte? NumberInStock { get; set; }
+
+        public byte NumberAvailable { get; set; }
 
     }
 }

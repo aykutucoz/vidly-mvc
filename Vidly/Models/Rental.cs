@@ -12,7 +12,7 @@ namespace Vidly.Models
         [Required]
         public Customer Customer { get; set; }
         [Required]
-        public Movie Movies { get; set; }
+        public Movie Movie { get; set; }
         public DateTime DateRented { get; set; }
         public DateTime? DateReturned { get; set; }
 

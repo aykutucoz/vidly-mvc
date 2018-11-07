@@ -6,6 +6,7 @@
             </button>           
         <div class="navbar-collapse collapse" id="navbarResponsive">
             <ul class="nav navbar-nav navbar-light">
+                <li class="nav-item">@Html.ActionLink("Rentals", "New", "Rentals", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Customers", "Index", "Customers", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Movies", "Index", "Movies", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
             </ul>
