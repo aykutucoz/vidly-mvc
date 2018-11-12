@@ -46,9 +46,9 @@ namespace Vidly.Controllers
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
-            var viewModel = new CustomerFormViewModel
+
+            var viewModel = new CustomerFormViewModel()
             {
-                Customers = new Customer(),
                 MembershipTypes = membershipTypes
             };
 
@@ -58,31 +58,30 @@ namespace Vidly.Controllers
         [Authorize(Roles = RoleName.CanManageMovies)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(CustomerFormViewModel customer)
+        public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new CustomerFormViewModel
+                var viewModel = new CustomerFormViewModel(customer)
                 {
-                    Customers = customer.Customers,
                     MembershipTypes = _context.MembershipTypes.ToList()
                 };
                 return View("CustomerForm", viewModel);
             }
-            if (customer.Customers.Id == 0)
+            if (customer.Id == 0)
             {
-                _context.Customers.Add(customer.Customers);
+                _context.Customers.Add(customer);
             }
             else
             {
-                var customerInDb = _context.Customers.Single(c => c.Id == customer.Customers.Id);
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
 
                 //TryUpdateModel(customerInDb); güvenli olmayan bir yöntem.AutoMapper kullanılabilir.
                 // Mapper.Map(customer,customerInDb);
-                customerInDb.Name = customer.Customers.Name;
-                customerInDb.Birthdate = customer.Customers.Birthdate;
-                customerInDb.MembershipTypeId = customer.Customers.MembershipTypeId;
-                customerInDb.IsSubscribedToNewsleter = customer.Customers.IsSubscribedToNewsleter;
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthdate = customer.Birthdate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsleter = customer.IsSubscribedToNewsleter;
             }
             try
             {
@@ -107,9 +106,8 @@ namespace Vidly.Controllers
                 return HttpNotFound();
             }
 
-            var viewModel = new CustomerFormViewModel
+            var viewModel = new CustomerFormViewModel(customer)
             {
-                Customers = customer,
                 MembershipTypes = _context.MembershipTypes.ToList()
             };
 

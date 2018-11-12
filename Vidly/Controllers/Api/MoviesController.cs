@@ -68,14 +68,16 @@ namespace Vidly.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var movieInDb = Mapper.Map<MovieDto, Movie>(movieDto);
-            _context.Movies.Add(movieInDb);
+            var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
+
+            if (movieInDb == null)
+                return NotFound();
+
+            Mapper.Map(movieDto, movieInDb);
+
             _context.SaveChanges();
 
-            movieDto.Id = movieInDb.Id;
-
-
-            return Created(new Uri(Request.RequestUri + "/" + movieInDb.Id), movieDto);
+            return Ok();
         }
         [HttpDelete]
         public IHttpActionResult DeleteMovie(int id)

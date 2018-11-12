@@ -124,3 +124,4 @@ C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\bin\Gli
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddRentalTable.resources
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.SetMovieClass1.resources
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddNumberAvailableToMovie.resources
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Vidly\Vidly\bin\Elmah.dll

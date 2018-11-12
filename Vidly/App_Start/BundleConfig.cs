@@ -16,7 +16,8 @@ namespace Vidly
                         "~/Scripts/bootbox.js",
                         "~/Scripts/respond.js",
                         "~/Scripts/typeahead.bundle.js",
-                        "~/Scripts/toastr.js"
+                        "~/Scripts/toastr.js",
+                        "~/Scripts/moment.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
