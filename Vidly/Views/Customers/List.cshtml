@@ -5,25 +5,57 @@
 }
 
 
-@Html.ActionLink("New Customer", "New", "Customers", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("New Customer", "New", "Customers", null, new { @class = "btn btn-primary gap" })
 <table id="customers" class="table table-bordered table-hover" style="margin-top:25px;">
     <thead>
         <tr>
             <th>Customer</th>
             <th>Membership Type</th>
             <th>#</th>
+            <th>Rented Movies</th>
         </tr>
     </thead>
     <tbody></tbody>
 </table>
 
+<div class="modal" tabindex="-1" role="dialog" id="movieList">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mListHeader">Rented Movie List</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="mList" class="table table-bordered table-hover" style="margin-top:25px;">
+                    <thead>
+                        <tr>
+                            <th>Movie</th>
+                            <th>Rented Date</th>
+                            <th>Date Returned</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @section scripts{
     <script>
         $(document).ready(function () {
-           var table = $("#customers").DataTable({
+
+            var table = $("#customers").DataTable({
                 ajax: {
                     url: "/api/customers",
-                    dataSrc:""
+                    dataSrc: ""
                 },
                 columns: [
                     {
@@ -33,16 +65,23 @@
                         }
                     },
                     {
-                        data:"membershipType.name"
+                        data: "membershipType.name"
                     },
                     {
                         data: "id",
-                        render:function(data){
-                            return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>"
+                        }
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link btnList' data-mlistid=" + data + ">Movie List</button>";
                         }
                     }
-                
+
                 ]
+
             });
 
             $("#customers").on("click", ".js-delete", function () {
@@ -59,10 +98,65 @@
                         });
                     }
                 });
-                               
+
             });
+
+            $("#customers").on("click", ".btnList", function () {
+
+                var id = $(this).data("mlistid");
+
+                var tableList = $("#mList").DataTable({
+                    "bDestroy": true,
+                    ajax: {
+                        url: "/api/customers/RentedMovies/" + id,
+                        dataSrc: ""
+                    },
+                    columns: [
+                        {
+                            data: "name"
+                        },
+                        {
+                            data: "dateRented",
+                            render: function (data, type, row) {
+                                if (type === "sort" || type === "type") {
+                                    return data;
+                                }
+                                return moment(data).format("MM-DD-YYYY HH:mm");
+                            }
+                        },
+                        {
+                            data: "dateReturned",
+                            render: function (data, type, row) {
+                                if (type === "sort" || type === "type") {
+                                    return data;
+                                }
+                                if (data == null) {
+                                    return "<div class='input-group'><div class='input-group-prepend'><div class='input-group-text'>"+
+                                           "<input type='checkbox' class='returned' aria-label='Checkbox for following text input'>" +
+                                           "</div></div><input type='text' placeholder='Returned' id='returnedDate' class='form-control' aria-label='Text input with checkbox'></div>";
+                                }
+                                 
+                                return moment(data).format("MM-DD-YYYY HH:mm");
+                            }
+                        }
+                    ]
+                });
+                $("#movieList").modal();
+
+                $("#mList").on("change", ".returned", function () {
+                    if ($(this).prop('checked')) {
+                        var returnedDate = new Date();
+                        $("#returnedDate").val(moment(returnedDate).format("MM-DD-YYYY"));
+                    }
+                    else {
+                        $("#returnedDate").val("");
+                    }
+                    
+                })
+            });
+                           
         });
     </script>
 
-    }
+}
 

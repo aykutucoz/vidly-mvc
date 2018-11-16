@@ -9,10 +9,10 @@
 @using (Html.BeginForm("Save", "Customers"))
 {
     <div class="form-group">
-        @Html.ValidationSummary(true,"Please fix the following errors")
+        @Html.ValidationSummary(true, "Please fix the following errors")
         @Html.LabelFor(m => m.Name)
-        @Html.TextBoxFor(m => m.Name, new { @class ="form-control" })
-        @Html.ValidationMessageFor(m=>m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.MembershipTypeId)
@@ -21,8 +21,15 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Birthdate)
-        @Html.TextBoxFor(m => m.Birthdate, "{0:d MMM yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m=>m.Birthdate)
+        <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+            @Html.TextBoxFor(m => m.Birthdate, "{0:dd/MM/yyyy}", new { AttributeTargets= "#datetimepicker", @class = "form-control datetimepicker-input" })
+            <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+        
+        @*@Html.EditorFor(m => m.Birthdate, "{0:dd/MM/yyyy}",new { htmlAttributes = new { @class = "form-control datePicker" } })*@
+        @Html.ValidationMessageFor(m => m.Birthdate)
     </div>
     <div class="checkbox">
         <label>
@@ -36,5 +43,12 @@
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker').datetimepicker({
+                    format:'L'
+                });
+            });
+</script>
 }
 

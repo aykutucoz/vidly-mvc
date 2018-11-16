@@ -92,5 +92,28 @@ namespace Vidly.Controllers.Api
             return Ok();
         }
 
+        //GET/api/customers/RentedMovies/1
+        [HttpGet]
+        [Route("api/customers/RentedMovies/{id}")]
+        public IHttpActionResult GetRentedMovies(int id)
+        {
+            var movieList = _context.Rentals
+                                    .Include(c => c.Movie)
+                                    .Where(c => c.Customer.Id == id).Select(x => new { x.Movie.Name,x.DateRented,x.DateReturned });
+
+            if (movieList == null)
+                return BadRequest("No rent.");
+
+            return Ok(movieList);
+        }
+
+        //PUT/api/customers/UpdateRentals/{}
+        //[HttpPut]
+        //[Route("api/customers/UpdateRentals/{}")]
+        //public IHttpActionResult UpdateRentals()
+        //{
+        //    return Ok();
+        //}
+
     }
 }

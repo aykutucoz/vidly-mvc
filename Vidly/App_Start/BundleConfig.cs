@@ -17,7 +17,9 @@ namespace Vidly
                         "~/Scripts/respond.js",
                         "~/Scripts/typeahead.bundle.js",
                         "~/Scripts/toastr.js",
-                        "~/Scripts/moment.js"
+                        "~/Scripts/moment.js",
+                        "~/Scripts/tr.js",
+                        "~/Scripts/tempusdominus-bootstrap-4.min.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -31,7 +33,8 @@ namespace Vidly
                       "~/Content/DataTables/css/datatables.bootstrap4.css",
                       "~/Content/typeahead.css",
                       "~/Content/toastr.css",
-                      "~/Content/Site.css"));
+                      "~/Content/tempusdominus-bootstrap-4.min.css",
+                      "~/Content/Site.css").Include("~/Content/font-awesome.min.css", new CssRewriteUrlTransform()));
         }
     }
 }

@@ -54,11 +54,12 @@ namespace Vidly.Controllers.Api
                 return BadRequest();
 
             var movie = Mapper.Map<MovieDto, Movie>(movieDto);
+
             _context.Movies.Add(movie);
             _context.SaveChanges();
 
             movieDto.Id = movie.Id;
-            movieDto.DateAdded = movie.DateAdded;
+
             return Created(new Uri(Request.RequestUri + "/" + movie.Id), movieDto);
 
         }
