@@ -1,0 +1,97 @@
+﻿@model Vidly.ViewModels.SelectPersonViewModel
+
+
+@using (Html.BeginForm("GetRentedMovies", "/api/Customers", FormMethod.Post, new { encType = "multipart/form-data", name = "myform" }))
+{
+<div class="modal" tabindex="-1" role="dialog" id="movieList">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mListHeader">Rented Movie List</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="mList" class="table table-bordered table-hover" style="margin-top:25px; width:526px;">
+                    <thead>
+                        <tr>
+                            <th>Movie</th>
+                            <th>Rented Date</th>
+                            <th>Date Returned</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary js-update" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#customers").on("click", ".btnList", function () {
+
+                var id = $(this).data("mlistid");
+
+                var tableList = $("#mList").DataTable({
+                    "bDestroy": true,
+                    ajax: {
+                        url: "/api/customers/RentedMovies/" + id,
+                        dataSrc: ""
+                    },
+                    columns: [
+                        {
+                            data: "name"
+                        },
+                        {
+                            data: "dateRented",
+                            render: function (data, type, row) {
+                                if (type === "sort" || type === "type") {
+                                    return data;
+                                }
+                                return moment(data).format("MM-DD-YYYY HH:mm");
+                            }
+                        },
+                        {
+                            data: "dateReturned",
+                            render: function (data, type, row) {
+                                if (type === "sort" || type === "type") {
+                                    return data;
+                                }
+                                if (data == null) {
+                                    return "<div class='input-group'><div class='input-group-prepend'><div class='input-group-text'>" +
+                                           "<input type='checkbox' class='returned' aria-label='Checkbox for following text input'>" +
+                                           "</div></div><input type='text' placeholder='Returned' id='returnedDate' class='form-control' aria-label='Text input with checkbox'></div>";
+                                }
+
+                                return moment(data).format("MM-DD-YYYY HH:mm");
+                            }
+                        }
+                    ]
+                });
+                $("#movieList").modal();
+
+                $("#mList").on("change", ".returned", function () {
+                    if ($(this).prop('checked')) {
+                        var returnedDate = new Date();
+                        $(this).parent().parent().parent().find("input").val(moment(returnedDate).format("MM-DD-YYYY HH:MM"));
+                    }
+                    else {
+                        $(this).parent().parent().parent().find("input").val("");
+                    }
+
+                })
+            });
+        });
+
+
+    </script>
+
+}

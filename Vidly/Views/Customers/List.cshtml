@@ -1,5 +1,4 @@
-﻿@model IEnumerable<Vidly.Models.Customer>
-@{
+﻿@{
     ViewBag.Title = "Customers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -28,7 +27,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table id="mList" class="table table-bordered table-hover" style="margin-top:25px;">
+                <table id="mList" class="table table-bordered table-hover" style="margin-top:25px; width:526px;">
                     <thead>
                         <tr>
                             <th>Movie</th>
@@ -40,13 +39,11 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" data-dismiss="modal">Save</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
-
 
 @section scripts{
     <script>
@@ -79,7 +76,6 @@
                             return "<button class='btn-link btnList' data-mlistid=" + data + ">Movie List</button>";
                         }
                     }
-
                 ]
 
             });
@@ -113,7 +109,10 @@
                     },
                     columns: [
                         {
-                            data: "name"
+                            data: "name",
+                            render: function (data, type, movie) {
+                                return movie.name + "<i id=" + movie.id + " data-movieId=" + movie.id + "></i>";
+                            }
                         },
                         {
                             data: "dateRented",
@@ -126,36 +125,63 @@
                         },
                         {
                             data: "dateReturned",
-                            render: function (data, type, row) {
+                            render: function (data, type, movie) {
                                 if (type === "sort" || type === "type") {
                                     return data;
                                 }
                                 if (data == null) {
-                                    return "<div class='input-group'><div class='input-group-prepend'><div class='input-group-text'>"+
-                                           "<input type='checkbox' class='returned' aria-label='Checkbox for following text input'>" +
+                                    return "<div class='input-group'><div class='input-group-prepend'><div class='input-group-text'>" +
+                                           "<input type='checkbox' data-movieId=" + movie.id + "  class='returned' aria-label='Checkbox for following text input'>" +
                                            "</div></div><input type='text' placeholder='Returned' id='returnedDate' class='form-control' aria-label='Text input with checkbox'></div>";
                                 }
-                                 
+
                                 return moment(data).format("MM-DD-YYYY HH:mm");
                             }
                         }
                     ]
                 });
+
                 $("#movieList").modal();
 
-                $("#mList").on("change", ".returned", function () {
-                    if ($(this).prop('checked')) {
-                        var returnedDate = new Date();
-                        $("#returnedDate").val(moment(returnedDate).format("MM-DD-YYYY"));
-                    }
-                    else {
-                        $("#returnedDate").val("");
-                    }
-                    
-                })
             });
-                           
+
+
+            $("#mList").on("change", ".returned", function () {
+                //var id = $(".btnList").data("mlistid");
+                var check = $(this);
+
+                if ($(this).prop('checked')) {
+                    var returnedDate = new Date();
+                    $(this).parent().parent().parent().find("input").val(moment(returnedDate).format("MM-DD-YYYY HH:MM"));
+
+                    bootbox.confirm({
+                        message: "Are you sure?",
+                        className: 'bootboxAlert',
+                        callback: function (result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/api/customers/UpdateRentals/" + check.attr("data-movieId") + "/" + id,
+                                    method: "PUT"
+                                }).done(function () {
+                                    toastr.success("Rentals successfully recorded.");
+                                }).fail(function () {
+                                    toastr.error("Something unexpected happened.");
+                                });
+                            }
+                            else {
+                                $(check).prop('checked', false);
+                                $(check).parent().parent().parent().find("input").val("");
+                            }
+                        }
+                    });
+                }
+                else {
+                    $(this).parent().parent().parent().find("input").val("");
+                }
+
+            })
         });
+
     </script>
 
 }

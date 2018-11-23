@@ -8,6 +8,8 @@ using System.Net.Http;
 using System.Web.Http;
 using Vidly.Dtos;
 using Vidly.Models;
+using Vidly.ViewModels;
+using System.Data.Entity.Validation;
 
 namespace Vidly.Controllers.Api
 {
@@ -99,7 +101,9 @@ namespace Vidly.Controllers.Api
         {
             var movieList = _context.Rentals
                                     .Include(c => c.Movie)
-                                    .Where(c => c.Customer.Id == id).Select(x => new { x.Movie.Name,x.DateRented,x.DateReturned });
+                                    .Where(c => c.Customer.Id == id)
+                                    .Select(x => new {x.Movie.Id, x.Movie.Name,x.DateRented,x.DateReturned });
+
 
             if (movieList == null)
                 return BadRequest("No rent.");
@@ -107,13 +111,29 @@ namespace Vidly.Controllers.Api
             return Ok(movieList);
         }
 
-        //PUT/api/customers/UpdateRentals/{}
-        //[HttpPut]
-        //[Route("api/customers/UpdateRentals/{}")]
-        //public IHttpActionResult UpdateRentals()
-        //{
-        //    return Ok();
-        //}
+        //PUT/api/customers/UpdateRentals/1/2
+        [HttpPut]
+        [Route("api/customers/UpdateRentals/{MovieId}/{CustomerId}")]
+        public IHttpActionResult UpdateRentals(int MovieId,int CustomerId)
+        {
+            var rentedMovie = _context.Rentals
+                                      .Include(c => c.Movie)
+                                      .Where(c => c.Customer.Id == CustomerId && c.Movie.Id == MovieId && c.DateReturned == null)
+                                      .Single();
+
+            rentedMovie.DateReturned = DateTime.Now;
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return Ok();
+        }
 
     }
 }
